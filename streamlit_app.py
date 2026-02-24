@@ -17,24 +17,197 @@ st.set_page_config(
     layout="centered"
 )
 
-# Custom CSS
+# Custom CSS for better readability - UPDATED LIGHT THEME
 st.markdown("""
 <style>
+    /* Main background - light gradient for better readability */
     .stApp {
-        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
     }
+    
+    /* Main header styling */
+    .main-header {
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        padding: 2rem;
+        border-radius: 15px;
+        margin-bottom: 2rem;
+        box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+    }
+    
+    .main-header h1 {
+        color: white !important;
+        font-size: 2.5rem;
+        margin-bottom: 0.5rem;
+    }
+    
+    .main-header p {
+        color: rgba(255,255,255,0.9) !important;
+        font-size: 1.1rem;
+    }
+    
+    /* Recommendation box - keep gradient but improve text */
     .recommendation-box {
         background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
         padding: 2rem;
         border-radius: 15px;
         text-align: center;
         color: white;
-        box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+        box-shadow: 0 10px 30px rgba(102,126,234,0.3);
+        margin: 2rem 0;
     }
+    
     .recommendation-number {
         font-size: 4rem;
         font-weight: bold;
         margin: 1rem 0;
+        color: white;
+        text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+    }
+    
+    /* Tip boxes - clean white with colored border */
+    .tip-box {
+        background: white;
+        padding: 1rem 1.5rem;
+        border-radius: 10px;
+        border-left: 5px solid #667eea;
+        margin: 0.8rem 0;
+        box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        color: #2c3e50;
+        font-weight: 500;
+        transition: transform 0.2s;
+    }
+    
+    .tip-box:hover {
+        transform: translateX(5px);
+        box-shadow: 0 6px 12px rgba(102,126,234,0.2);
+    }
+    
+    /* Input labels - make them darker for readability */
+    .stNumberInput label, .stSelectbox label {
+        color: #2c3e50 !important;
+        font-weight: 600 !important;
+        font-size: 1rem !important;
+    }
+    
+    /* Input fields styling */
+    .stNumberInput input, .stSelectbox select {
+        background: white;
+        border: 2px solid #e0e0e0;
+        border-radius: 8px;
+        padding: 0.5rem;
+        color: #2c3e50;
+        font-weight: 500;
+    }
+    
+    .stNumberInput input:focus, .stSelectbox select:focus {
+        border-color: #667eea;
+        box-shadow: 0 0 0 2px rgba(102,126,234,0.2);
+    }
+    
+    /* Button styling */
+    .stButton>button {
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        color: white;
+        font-weight: bold;
+        font-size: 1.1rem;
+        padding: 0.75rem 2rem;
+        border: none;
+        border-radius: 25px;
+        box-shadow: 0 4px 15px rgba(102,126,234,0.3);
+        transition: all 0.3s ease;
+        width: 100%;
+        margin-top: 1rem;
+    }
+    
+    .stButton>button:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 8px 25px rgba(102,126,234,0.4);
+    }
+    
+    /* Tab styling */
+    .stTabs [data-baseweb="tab-list"] {
+        gap: 2rem;
+        background-color: white;
+        padding: 0.5rem;
+        border-radius: 50px;
+        box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+    }
+    
+    .stTabs [data-baseweb="tab"] {
+        color: #2c3e50;
+        font-weight: 600;
+        border-radius: 25px;
+        padding: 0.5rem 1.5rem;
+    }
+    
+    .stTabs [aria-selected="true"] {
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        color: white !important;
+    }
+    
+    /* Success/Warning/Info messages */
+    .stAlert {
+        border-radius: 10px;
+        border-left: 5px solid;
+        background: white;
+    }
+    
+    /* DataFrame styling */
+    .stDataFrame {
+        background: white;
+        border-radius: 10px;
+        padding: 1rem;
+        box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+    }
+    
+    /* Metric cards */
+    .stMetric {
+        background: white;
+        padding: 1rem;
+        border-radius: 10px;
+        box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+    }
+    
+    .stMetric label {
+        color: #2c3e50 !important;
+    }
+    
+    .stMetric [data-testid="stMetricValue"] {
+        color: #667eea !important;
+        font-weight: bold;
+    }
+    
+    /* Info tab content */
+    .info-box {
+        background: white;
+        padding: 2rem;
+        border-radius: 15px;
+        box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+        margin: 1rem 0;
+    }
+    
+    /* File uploader */
+    .stFileUploader {
+        background: white;
+        padding: 1rem;
+        border-radius: 10px;
+        border: 2px dashed #667eea;
+    }
+    
+    /* Expander */
+    .streamlit-expanderHeader {
+        background: white;
+        border-radius: 10px;
+        color: #2c3e50;
+        font-weight: 600;
+    }
+    
+    /* Footer */
+    .footer {
+        text-align: center;
+        color: #2c3e50;
+        padding: 2rem;
+        font-size: 0.9rem;
     }
 </style>
 """, unsafe_allow_html=True)
@@ -90,9 +263,9 @@ def rule_based_prediction(gpa, difficulty, past_performance, available_hours):
     prediction = max(0.5, prediction)
     return round(prediction * 2) / 2
 
-# Header
+# Header with updated styling
 st.markdown("""
-<div style='text-align: center; color: white; padding: 2rem;'>
+<div class="main-header">
     <h1>📚 Study Time Recommender</h1>
     <p>Get personalized daily study time recommendations based on your profile</p>
 </div>
