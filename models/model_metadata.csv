@@ -1,0 +1,2 @@
+model_name,features,target,r2_score,rmse,mae,training_date,training_samples,test_samples
+Gradient Boosting,"['gpa', 'difficulty_level', 'past_performance', 'available_hours']",recommended_study_hours,0.8007165324307155,0.6114295575490042,0.4116695846892361,2026-02-24 15:31:37,1600,400
